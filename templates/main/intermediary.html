@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+ 
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  {% load static %}
+
+  <link href="{% static 'home/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'home/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'home/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'home//assets/css/main.css' %}" rel="stylesheet"> 
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="#">{{ user.email }}</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ trader.phone_number }}</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        
+        <a href="{% url 'intermediary' %}" class=""><i class="bi bi">Home</i></i></a>
+        <a href="{% url 'logout' %}" ><i>logout</i></i></a>
+      </div>
+    </div>
+  </section><!-- End Top Bar -->
+
+  <main id="main">
+    <!-- ======= Our Services Section ======= -->
+    <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h4>Pending Complaints </h4>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">          
+            {% for c in complaints %}
+            <div class="col-lg-4 col-md-6">
+            <div class="service-item  position-relative">
+             
+              <h6>product: {{ c.transaction.product }}</h6>
+              <p>from: {{ c.transaction.sender }}</p>
+              <p>to: {{ c.transaction.receiver }}</p>
+              <p>description: {{ c.transaction.description }}</p>
+              <p>Amount: {{ c.transaction.amount }}</p>
+              <p>Issue: {{ c.issue }}</p>
+              
+              <a href="{% url 'respond-complaint' c.id %}"> <button class="btn btn-outline-success">View>></button></a>
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}  
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+    
+
+  </main><!-- End #main -->
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>Escrow.com</span>
+          </a>
+          <div class="social-links d-flex mt-4">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>      
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+            A108  Street <br>
+            Nairobi , 535022<br>
+             <br><br>
+            <strong>Email:</strong> info@example.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>   
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% comment %} <div id="preloader"></div> {% endcomment %}
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'home/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'home/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

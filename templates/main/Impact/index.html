@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+ 
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  {% load static %}
+
+  <link href="{% static 'home/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'home/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'home/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'home//assets/css/main.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="#">{{ user.email }}</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ trader.phone_number }}</span></i>
+      </div>
+      {% comment %} <div class="social-links d-none d-md-flex align-items-center"> {% endcomment %}
+        {% comment %} <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> {% endcomment %}
+        {% comment %} <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> {% endcomment %}
+        {% comment %} <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> {% endcomment %}
+        {% comment %} <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a> {% endcomment %}
+        <a href="{% url 'logout' %}" ><h6 style="color:white;">logout</h6></a>
+      </div>
+    </div>
+  </section><!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Welcome {{ user.username }} <span>.</span></h1>
+        {% comment %} <h1>stars {{ user.username }} <span>.</span></h1>  {% endcomment %}
+      </a>     
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i><h1> <span class="badge badge-success">Rating: {{ total_ratings.total_stars }} stars</span> <span>.</span></h1>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start mx-auto">
+          <h2>search <span>seller</span></h2>
+         
+          
+
+          <form method="post" action="{% url 'search' %}" id="formSearch">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="search" class="form-control rounded" name="name" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+              <button type="submit" class="btn btn-outline-light" data-mdb-ripple-init>search</button>
+              
+            </div>
+            {% comment %} <div class="row gy-5"><span><input type="text" name="name" class="form-control mb-10"></span></div> {% endcomment %}
+          {% comment %} <div class="d-flex justify-content-center justify-content-lg-start mt-10"> {% endcomment %}
+            {% comment %} <a href="#" class="btn-get-started mt-10">Search</a> {% endcomment %}
+            {% comment %} <button type="submit"> submit </button> {% endcomment %}
+          </form>
+          <p style="color:red;">{{ exists }}</p>
+
+            {% comment %} <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> {% endcomment %}
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2">
+          {% comment %} <img src="{% static 'home/assets/img/hero-img.svg' %}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100"> {% endcomment %}
+        </div>
+      </div>
+    </div>
+
+    
+
+    </div>
+  </section>
+  <!-- End Hero Section -->
+
+  <main id="main"> 
+
+     <!-- ======= Our Services Section ======= -->
+     <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h6>My Pending Approval Trades.</h6>
+          <p>The below traders want to buy the respective products from you and are awaiting for your acceptance if you want to sell them.</p>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+          
+            {% for t in pending %}
+            <div class="col-lg-4 col-md-6">
+            <div class="service-item  position-relative">
+              <h6>Trader username: {{ t.sender.user }}</h6><hr/>
+              <div style="margin-left:15px;">             
+              <h6>Purchase product: {{ t.product }}</h6>
+              
+              {% comment %} <p>from: {{ t.sender }}</p> {% endcomment %}
+              {% comment %} <p>From: {{ t.receiver }}</p> {% endcomment %}
+              <p>description: {{ t.description }}</p>
+             <p>Price: {{ t.amount }}</p>
+              </div>
+             <div class="container d-flex justify-content-center justify-content-md-between">
+              <div class="contact-info d-flex align-items-center">
+                <a href="{% url 'commitment_fee' t.id %}"><button class="btn btn-success">Accept</button></a>
+              </div>
+              <div class="social-links d-none d-md-flex align-items-center">              
+                <a href="{% url 'reject-tansaction' t.id %}"><button class="btn btn-danger">Reject</button></a>
+              </div>
+            </div>
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}  
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+
+
+     <!-- ======= Our Services Section ======= -->
+     <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h6> Awaiting Delivery.</h6>
+          <p>The products in the trades below are to be delivered to you by the respective traders, make sure you confirm the delivery. You can also cancel the trade and recieve your money back if you recieve faulty products or the product is not delivered at all.</p>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+          
+            {% for t in awaiting_delivery_pending %}
+            <div class="col-lg-4 col-md-6">
+            <div class="service-item  position-relative">
+              <h6>Trader username: {{ t.receiver.user }}</h6><hr/>
+              <div style="margin-left:15px;">             
+              <h6>Purchase product: {{ t.product }}</h6>
+              
+              {% comment %} <p>from: {{ t.sender }}</p> {% endcomment %}
+              {% comment %} <p>From: {{ t.receiver }}</p> {% endcomment %}
+              <p>description: {{ t.description }}</p>
+             <p>Price: {{ t.amount }}</p>
+              </div>
+             <div class="container d-flex justify-content-center justify-content-md-between">
+              <div class="contact-info d-flex align-items-center">
+                <a href="{% url 'confirm-delivery' t.id %}"><button class="btn btn-success">confirm delivery</button></a>
+              </div>
+              <div class="social-links d-none d-md-flex align-items-center">              
+                <a href="{% url 'send-complaint' t.id %}" style="text-decoration:none;"><button class="btn btn-danger">Cancel</button></a>
+              </div>
+            </div>
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}  
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+
+     <!-- ======= Our Services Section ======= -->
+     <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h6>You Are Required To Deliver The Following Products.</h6>
+          <p>The products and traders below are awaiting delivery of the respective products before the money is send to your mpesa</p>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+          
+            {% for t in sending_delivery_pending %}
+            
+            <div class="col-lg-4 col-md-6">
+              <a href="" style="text-decoration:none;">
+            <div class="service-item  position-relative">
+             
+              <h6>product: {{ t.product }}</h6>
+              {% comment %} <p>from: {{ t.sender }}</p> {% endcomment %}
+              <p>trader: {{ t.receiver.user }}</p>
+              <p>description: {{ t.description }}</p>
+             <p>Price: {{ t.amount }}</p>
+             <p>County: {{ t.receiver.county }}</p>
+            </div>
+          </a>
+          </div><!-- End Service Item -->
+          {% endfor %}  
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+     <!-- ======= Our Services Section ======= -->
+     <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h6>The Following Trades Have Been Rejected.</h6>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+          
+            {% for t in rejected %}
+            <div class="col-lg-4 col-md-6">
+            <div class="service-item  position-relative">
+             
+              <h6 >product: {{ t.product }}</h6>
+              <p>from: {{ t.sender.user }}</p>
+              <p>to: {{ t.receiver.user }}</p>
+              <p>description: {{ t.description }}</p>
+             <p>Price: {{ t.amount }}</p>
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}  
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+    
+
+     <!-- ======= Our Services Section ======= -->
+     <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h6>My Complaints.</h6>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+          
+            {% for c in complaints %}
+            <div class="col-lg-4 col-md-6">
+            <div class="service-item  position-relative">
+             
+              <h6 >transaction: {{ c.transaction }}</h6>
+              <p>issue: {{ c.issue }}</p>
+              <p>status: {{ c.status }}</p>
+            
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}  
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+   
+
+  </main><!-- End #main -->
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>Escrow.com</span>
+          </a>
+          <div class="social-links d-flex mt-4">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>      
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+            A108  Street <br>
+            Nairobi , 535022<br>
+            United States <br><br>
+            <strong>Email:</strong> info@example.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>   
+
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% comment %} <div id="preloader"></div> {% endcomment %}
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'home/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'home/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

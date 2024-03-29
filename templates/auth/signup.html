@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  {% load static %}
+ 
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+   <link href="{% static 'landing/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'landing/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'landing/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'landing/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'landing/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  {% comment %} <link href="{% static 'landing/assets/css/style.css' %}" rel="stylesheet" media="all"> {% endcomment %}
+  {% comment %} <link href="assets/css/style.css" rel="stylesheet">  {% endcomment %}
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+  
+  /* BASIC */
+  
+  html {
+    {% comment %} background-color: #56baed; {% endcomment %}
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+  }
+  
+  a {
+    color: #92badd;
+    display:inline-block;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display:inline-block;
+    margin: 40px 8px 10px 8px; 
+    color: #cccccc;
+    text-decoration: none;
+  }
+  
+  
+  
+  /* STRUCTURE */
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+  }
+  
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 #r1b8175;
+    box-shadow: 0 30px 60px 0 #1b8175;
+    text-align: center;
+  }
+  
+  #formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  
+  
+  /* TABS */
+  
+  h2.inactive {
+    color: #cccccc;
+  }
+  
+  h2.active {
+    color: #0d0d0d;
+    border-bottom: 2px solid #5fbae9;
+    text-decoration: none;
+  }
+  
+  
+  
+  /* FORM TYPOGRAPHY*/
+  
+  button  {
+    background-color: #00796b;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 16px;
+    width: 520px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 2px 5px 5px 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #1b8175;
+  }
+  
+  button:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  
+  input[type=text], input[type=email] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
+  
+  input[type=password] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
+  
+  input:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #1b8175;
+  }
+  
+  input:placeholder {
+    color: #cccccc;
+  }
+  input:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+  }
+  
+  input:placeholder {
+    color: #cccccc;
+  }
+  
+  
+  
+  
+  /* ANIMATIONS */
+  
+  /* Simple CSS3 Fade-in-down Animation */
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  
+  .fadeIn {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+  
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+  
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+  }
+  
+  .fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
+  .fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  
+  .fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+  
+  .fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  .underlineHover:after {
+    text-decoration: none;
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+  }
+  
+  .underlineHover:hover {
+    color: #0d0d0d;
+    text-decoration: none;
+  }
+  
+  .underlineHover:hover:after{
+    width: 100%;
+  }
+  
+  
+  
+  /* OTHERS */
+  
+  *:focus {
+      outline: none;
+  } 
+  
+  #icon {
+    width:60%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  ul {
+    text-decoration: none;
+    list-style-type:none;
+    color: red;
+    font: 10px;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
+  <header id="header1" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        {% comment %} <h1><a href="/">Back Home</a></h1> {% endcomment %}
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+    
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <main id="main"> 
+
+    <section class="section">
+      <div class="container">
+        <div class="row mb-5 ">
+          <div class="col-md-6" data-aos="fade-up">
+
+            <h2 style="color:#1b8175;">Registration Form </h2>
+          </div>
+
+          <div class="col-md-6 mr-0" style="margin-right:0px;" data-aos="fade-up">
+
+            <a href="/"><h2 style="color:#1b8175;">Back Home </h2></a>
+          </div>
+
+        </div>
+
+        <div class="row">         
+
+          <div class="col-md-10 mb-5 mb-md-0" data-aos="fade-up">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="input-group">
+                  {% render_field userForm.username class="input--style-2 form-control" placeholder="Username" %}
+                  {% if userForm.username.errors %}
+                      {{ userForm.username.errors }}
+                  {% endif %}
+              </div>
+              <div class="row row-space">
+                  <div class="col-6">
+                      <div class="input-group">
+                          {% render_field traderForm.first_name class="input--style-2 form-control" placeholder="First Name" %}
+                          {% if traderForm.first_name.errors %}
+                               {{ traderForm.first_name.errors }}
+                          {% endif %}
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="input-group">
+                          {% render_field traderForm.last_name class="input--style-2 form-control" placeholder="Last Name" %}
+                          {% if traderForm.last_name.errors %}
+                              {{ traderForm.last_name.errors }}
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row row-space">
+                  <div class="col-6">
+                      <div class="input-group">
+                          {% render_field userForm.email class="input--style-2 form-control" placeholder="Email" %}
+                          {% if userForm.email.errors %}
+                              {{ userForm.email.errors }}
+                          {% endif %}
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="input-group">
+                          {% render_field traderForm.phone_number class="input--style-2 form-control" placeholder="Phone Number" %}
+                          {% if traderForm.phone_number.errors %}
+                              {{ traderForm.phone_number.errors }}
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>     
+
+              <div class="row row-space">
+                  <div class="col-6">
+                      <div class="input-group">
+                          {% render_field traderForm.county class="input--style-2 form-control" placeholder="County" %}
+                          {% if traderForm.county.errors %}
+                              {{ traderForm.county.errors }}
+                          {% endif %}
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="input-group">
+                          {% render_field traderForm.sub_county class="input--style-2 form-control" placeholder="Sub_county" %}
+                          {% if traderForm.sub_county.errors %}
+                              {{ traderForm.sub_county.errors }}
+                          {% endif %}
+                      </div>
+                  </div>
+              </div> 
+              
+              <div class="row row-space">
+              <div class="col-6">
+                  <div class="input-group">
+                      {% render_field userForm.password class="input--style-2 form-control" type="password" placeholder="Password" %}
+                      {% if userForm.password.errors %}
+                      {{ userForm.password.errors }}
+                  {% endif %}
+                  </div>
+                  
+              </div>   
+                           
+              <div class="col-6">
+                <div class="p-t-25">
+                  {% comment %} <input type="submit>" {% endcomment %}
+                    <button type="submit">Signup</button>
+                </div>
+                </div>
+              </div>
+          </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+   
+
+   
+
+  </main><!-- End #main -->
+
+ 
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'landing/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'landing/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'landing/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'landing/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'landing/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

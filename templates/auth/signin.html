@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  {% load static %}
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+
+  <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+ 
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+  
+
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+  }
+  
+  a {
+    color: #00796b;
+    display:inline-block;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  
+
+  
+  /* STRUCTURE */
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    {% comment %} width: 400px; {% endcomment %}
+    min-height: 100%;
+    padding: 20px;
+    margin-top:150px;
+  }
+  
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    max-width: 7000px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+  }
+  
+
+  
+
+  
+  /* FORM TYPOGRAPHY*/
+  
+  input[type=button], input[type=submit], input[type=reset]  {
+    background-color: #00796b;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 17px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+ 
+  
+  input[type=text] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
+  
+  input[type=password] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
+  
+  input[type=text]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #00796b;
+  }
+  
+  input[type=text]:placeholder {
+    color: #cccccc;
+  }
+  input[type=password]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+  }
+  
+  input[type=Passowrd]:placeholder {
+    color: #3d3b3b;
+  }
+  
+  
+  
+  
+  
+  
+  /* OTHERS */
+  
+  *:focus {
+      outline: none;
+  } 
+  
+  
+  
+  * {
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
+  <header id="header1" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        {% comment %} <h1><a href="/">Back Home</a></h1> {% endcomment %}
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>   
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <main id="main">   
+
+    <section class="section" data-aos="fade-up" data-aos-delay="">
+      <div class="page-wrapper  p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body" data-aos="fade-up" data-aos-delay="">
+                  <h1><a href="/">Back Home</a></h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {% render_field loginForm.username class="input--style-2 form-control" placeholder="Username" %}
+                            {% if loginForm.username.errors %}
+                                {{ loginForm.username.errors }}
+                            {% endif %}
+                        </div>                     
+      
+                        <div class="col-2">
+                            <div class="input-group">
+                                {% render_field loginForm.password class="input--style-2 form-control" type="password" placeholder="Password" %}
+                                {% if loginForm.password.errors %}
+                                {{ loginForm.password.errors }}
+                            {% endif %} 
+                            </div>
+                        </div>    
+                        <input type="submit" class="fadeIn fourth " value="Log In">                  
+
+                        <div class="p-t-25">
+                            {% comment %} <button class="btn btn--radius btn--green" type="submit">Login</button> {% endcomment %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+   
+
+   
+
+  </main><!-- End #main -->
+
+ 
+  {% comment %} <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'landing/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'landing/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'landing/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'landing/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'landing/assets/js/main.js' %}"></script> {% endcomment %}
+
+</body>
+
+</html>
